@@ -1,0 +1,3 @@
+jbdm_v1.sp and jbdm_v1.smx
+
+THESE ARE THE PUBLIC RELEASES OF THE JBDM PLUGINS :)
