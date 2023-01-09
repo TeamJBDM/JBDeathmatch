@@ -4,6 +4,10 @@ THESE ARE THE OLD PUBLIC RELEASES OF THE JBDM PLUGINS :)
 
 jbdm_v1.1.sp and jbdm_v1.1.smx
 
-The newest version of JBDM Plugin, with support for dm_soccer.
+The older version of JBDM Plugin, with support for dm_soccer.
+
+jbdm_v1.2.sp and jbdm_v1.2.smx
+
+but it made me cum a little it was so smooth
 
 jb_bhop is not used on any of the servers, and I should probably supply a server.cfg for server hosters to use at some point.
