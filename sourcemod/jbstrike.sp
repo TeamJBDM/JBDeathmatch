@@ -6,11 +6,11 @@
 
 public Plugin myinfo =
 {
-	name = "JBMod Deathmatch Weapons",
+	name = "JBStrike Weapon Remover",
 	author = "TeamJBDM",
 	description = "JBStrike stuff, y'know?",
 	version = "1.0",
-	url = "https://discord.com/invite/NuYEEZFpBR"
+	url = "https://discord.gg/P6ZwJvCsG8"
 };
 
 public void OnPluginStart()
@@ -22,21 +22,21 @@ public void OnPluginStart()
 public void OnMapStart()
 {
 
-command = FindConVar("mp_teamplay")
+new command = FindConVar("mp_teamplay")
 if(GetConVarBool(command) == 1)
 {
 	int entity_index = MaxClients + 1; // Skip all client indexs...
 
 	while((entity_index = FindEntityByClassname(entity_index, "weapon_*")) != -1)
 	{
-		RemoveEntity(ent);
+		RemoveEntity(entity_index);
 	}
 
 	entity_index = MaxClients + 1; // Skip all client indexs...
 
 	while((entity_index = FindEntityByClassname(entity_index, "item_*")) != -1)
 	{
-		RemoveEntity(ent);
+		RemoveEntity(entity_index);
 	}
 }
 }
