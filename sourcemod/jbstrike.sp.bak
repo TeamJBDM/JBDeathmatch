@@ -22,8 +22,8 @@ public void OnPluginStart()
 public void OnMapStart()
 {
 
-ConVar mp_teamplay = FindConVar("mp_teamplay");
-if (mp_teamplay && mp_teamplay.BoolValue)
+new command = FindConVar("mp_teamplay")
+if(GetConVarBool(command) == true)
 {
 	int entity_index = MaxClients + 1; // Skip all client indexs...
 
