@@ -2,6 +2,7 @@
 #include <sdktools>
 #include <sdkhooks>
 #include <sdktools_functions>
+#include <convars>
 
 public Plugin myinfo =
 {
@@ -12,12 +13,14 @@ public Plugin myinfo =
 	url = "https://discord.gg/P6ZwJvCsG8"
 };
 
+new ConVar:JBDMAnnabelleEnabled;
 public void OnPluginStart()
 {
 	PrintToServer("Hello world! Started JBMod Deathmatch plugin successfully!");
 	LoadTranslations("common.phrases.txt"); // Required for FindTarget fail reply
 	HookEvent("player_spawn", Event_PlayerSpawn);
 	RegAdminCmd("sm_sosmooth", cmd_jbdm_giveEverything, ADMFLAG_CHEATS, "but it made me cum a little it was so smooth");
+	JBDMAnnabelleEnabled	=	CreateConVar("jbdm_giveannabelle", "0", "Give weapon_annabelle on spawn? if higher than 0, then yes");
 }
 
 
@@ -38,6 +41,14 @@ public Event_PlayerSpawn(Handle:event, const String:name[], bool:dontBroadcast)
 		GivePlayerAmmo(client,	150, 3, true);
 		GivePlayerItem(client,	"weapon_frag");
 		GivePlayerAmmo(client,	2, 11, true);
+		
+		if	(JBDMAnnabelleEnabled != null && JBDMAnnabelleEnabled.IntValue == 1 )
+		{
+		GivePlayerItem(client,	"weapon_annabelle");
+		GivePlayerAmmo(client,	40, 5, true);
+		}
+
+		delete JBDMAnnabelleEnabled;
 	}
 }
 
@@ -86,7 +97,7 @@ stock jbdm_GiveEverything(int client)
 	
 	GivePlayerItem(client,	"weapon_crowbar");
 	GivePlayerItem(client,	"weapon_stunstick");
-    GivePlayerItem(client,	"weapon_pistol");
+	GivePlayerItem(client,	"weapon_pistol");
     GivePlayerItem(client,	"weapon_357");
     GivePlayerItem(client,	"weapon_smg1");
     GivePlayerItem(client,	"weapon_ar2");
