@@ -46,7 +46,7 @@ public Event_PlayerSpawn(Handle:event, const String:name[], bool:dontBroadcast)
         if (GetConVarInt(JBDMAnnabelleEnabled) == 1)
         {
             GivePlayerItem(client,    "weapon_annabelle");
-            GivePlayerAmmo(client,    40, 5, true);
+			GivePlayerAmmo(client,    40, 5, true);
         }
     }
 }

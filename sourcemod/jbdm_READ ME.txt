@@ -1,0 +1,11 @@
+jbdm_v1.3.1
+
+basically, you wanna put this into your server.cfg...
+
+sk_max_sniper_round 24
+sk_plr_dmg_sniper_round 200
+
+weapon_annabelle.txt is a weaponscript, that you wanna put into the
+jbmod/scripts/
+folder on your server.
+maybe put it on your fastdl??

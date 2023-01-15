@@ -9,47 +9,45 @@ public Plugin myinfo =
 	name = "JBMod Deathmatch Weapons",
 	author = "STRESSED CAT IN A BOX#5324, Nafrayu#0001",
 	description = "Gives the pistol, gravity gun, grenades, and smg to players when they spawn in, as well as removing the physgun from them. Made for JBMod Deathmatch servers.",
-	version = "1.3",
+	version = "1.3.1",
 	url = "https://discord.gg/P6ZwJvCsG8"
 };
 
-new ConVar:JBDMAnnabelleEnabled;
+new Handle:JBDMAnnabelleEnabled;
+
 public void OnPluginStart()
 {
-	PrintToServer("Hello world! Started JBMod Deathmatch plugin successfully!");
-	LoadTranslations("common.phrases.txt"); // Required for FindTarget fail reply
-	HookEvent("player_spawn", Event_PlayerSpawn);
-	RegAdminCmd("sm_sosmooth", cmd_jbdm_giveEverything, ADMFLAG_CHEATS, "but it made me cum a little it was so smooth");
-	JBDMAnnabelleEnabled	=	CreateConVar("jbdm_giveannabelle", "0", "Give weapon_annabelle on spawn? if higher than 0, then yes");
+    PrintToServer("Hello world! Started JBMod Deathmatch plugin successfully!");
+    LoadTranslations("common.phrases.txt"); // Required for FindTarget fail reply
+    HookEvent("player_spawn", Event_PlayerSpawn);
+    RegAdminCmd("sm_sosmooth", cmd_jbdm_giveEverything, ADMFLAG_CHEATS, "but it made me cum a little it was so smooth");
+    JBDMAnnabelleEnabled    =    CreateConVar("jbdm_giveannabelle", "0", "Give weapon_annabelle on spawn? if higher than 0, then yes");
 }
 
 
 public Event_PlayerSpawn(Handle:event, const String:name[], bool:dontBroadcast)
 {
 
-	new client = GetClientOfUserId(GetEventInt(event,	"userid"));
-	GivePlayerItem(client,	"weapon_physcannon");
-	
-	char map[256];
-	GetCurrentMap(map,	sizeof(map));
+    new client = GetClientOfUserId(GetEventInt(event,    "userid"));
+    GivePlayerItem(client,    "weapon_physcannon");
+    
+    char map[256];
+    GetCurrentMap(map,    sizeof(map));
 
-	if	(!StrEqual(map,	"dm_soccer"))
-	{
-		GivePlayerItem(client,	"weapon_smg1");
-		GivePlayerAmmo(client,	45, 4, true);
-		GivePlayerItem(client,	"weapon_pistol");
-		GivePlayerAmmo(client,	150, 3, true);
-		GivePlayerItem(client,	"weapon_frag");
-		GivePlayerAmmo(client,	2, 11, true);
-		
-		if	(JBDMAnnabelleEnabled != null && JBDMAnnabelleEnabled.IntValue == 1 )
-		{
-		GivePlayerItem(client,	"weapon_annabelle");
-		GivePlayerAmmo(client,	40, 5, true);
-		}
-
-		delete JBDMAnnabelleEnabled;
-	}
+    if    (!StrEqual(map,    "dm_soccer"))
+    {
+        GivePlayerItem(client,    "weapon_smg1");
+        GivePlayerAmmo(client,    45, 4, true);
+        GivePlayerItem(client,    "weapon_pistol");
+        GivePlayerAmmo(client,    150, 3, true);
+        GivePlayerItem(client,    "weapon_frag");
+        
+        if (GetConVarInt(JBDMAnnabelleEnabled) == 1)
+        {
+            GivePlayerItem(client,    "weapon_annabelle");
+        }
+        jb_GiveAmmo(client, "weapon_frag", false, 1);
+    }
 }
 
 public OnClientPutInServer(client)
@@ -93,6 +91,7 @@ stock jbdm_GiveEverything(int client)
 	//	thanks	nafrayu!
 	GivePlayerItem(client,	"weapon_leafblower");
 	GivePlayerItem(client,	"weapon_annabelle");
+	GivePlayerItem(client,	"weapon_flaregun");
 	GivePlayerItem(client,	"weapon_cubemap");
 	
 	GivePlayerItem(client,	"weapon_crowbar");
@@ -121,4 +120,36 @@ stock jbdm_GiveEverything(int client)
 			GivePlayerAmmo(client, 99999, secammo, bool:true);
 		}
 	}
+}
+
+stock jb_GiveAmmo(int client, char[] weaponName, bool secondary, int ammoCount)
+{
+    new array_size = GetEntPropArraySize(client, Prop_Send, "m_hMyWeapons");
+    
+    new entity;
+    
+    for(new a = 0; a < array_size; a++)
+    {
+        entity = GetEntPropEnt(client, Prop_Send, "m_hMyWeapons", a);
+        
+        if (entity != -1)
+        {            
+            new String:cname[256];
+            GetEntPropString(entity, Prop_Data, "m_iClassname", cname, sizeof(cname));
+
+            if (StrEqual(cname, weaponName) == true)
+            {
+                if (secondary == true)
+                {    
+                    new secammo = GetEntProp(entity, Prop_Send, "m_iSecondaryAmmoType");
+                    GivePlayerAmmo(client, ammoCount, secammo, bool:true);
+                }
+                else 
+                {
+                    new priammo = GetEntProp(entity, Prop_Send, "m_iPrimaryAmmoType");
+                    GivePlayerAmmo(client, ammoCount, priammo, bool:true);
+                }
+            }
+        }
+    }
 }
