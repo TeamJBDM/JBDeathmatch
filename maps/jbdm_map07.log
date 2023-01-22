@@ -1,0 +1,136 @@
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\JBMod\jbmod\materials
+Loading d:\jbmod vmfs\jbdeathmatch\maps\jbdm_map07.vmf
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\jbmod\jbmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...
+Merged 4 detail faces...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+done (0)
+writing d:\jbmod vmfs\jbdeathmatch\maps\jbdm_map07.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/sky_day01_07*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/sky_day01_07*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+done (0) (53312 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8...9...10
+Compacting texture/material tables...
+Reduced 59 texinfos to 41
+Reduced 12 texdatas to 12 (244 bytes to 244)
+Writing d:\jbmod vmfs\jbdeathmatch\maps\jbdm_map07.bsp
+MSG_FILEWRITE - Filesystem was asked to write to 'd:\jbmod vmfs\jbdeathmatch\maps\jbdm_map07.bsp', but we don't own that location. Allowing.
+0 seconds elapsed
+
+
+
+6 threads
+reading d:\jbmod vmfs\jbdeathmatch\maps\jbdm_map07.bsp
+reading d:\jbmod vmfs\jbdeathmatch\maps\jbdm_map07.prt
+ 154 portalclusters
+ 423 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 8 visible clusters (0.04%)
+Total clusters visible: 21370
+Average clusters visible: 138
+Building PAS...
+Average clusters audible: 154
+visdatasize:7422  compressed from 7392
+writing d:\jbmod vmfs\jbdeathmatch\maps\jbdm_map07.bsp
+MSG_FILEWRITE - Filesystem was asked to write to 'd:\jbmod vmfs\jbdeathmatch\maps\jbdm_map07.bsp', but we don't own that location. Allowing.
+0 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\jbmod vmfs\jbdeathmatch\maps\jbdm_map07.bsp
+622 faces
+120799 square feet [17395072.00 square inches]
+0 Displacements
+0 Square Feet [0.00 Square Inches]
+622 patches before subdivision
+12068 patches after subdivision
+2 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 955362, max 336
+transfer lists:   7.3 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(53444, 23540, 5587)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(4946, 1801, 333)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(544, 168, 25)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(65, 17, 2)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(8, 2, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(1, 0, 0)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(0, 0, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0020 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 0 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                   6/1024          288/49152    ( 0.6%) 
+brushes                152/8192         1824/98304    ( 1.9%) 
+brushsides             912/65536        7296/524288   ( 1.4%) 
+planes                 218/65536        4360/1310720  ( 0.3%) 
+vertexes              1096/65536       13152/786432   ( 1.7%) 
+nodes                  455/65536       14560/2097152  ( 0.7%) 
+texinfos                41/12288        2952/884736   ( 0.3%) 
+texdata                 12/2048          384/65536    ( 0.6%) 
+dispinfos                0/0               0/0        ( 0.0%) 
+disp_verts               0/0               0/0        ( 0.0%) 
+disp_tris                0/0               0/0        ( 0.0%) 
+disp_lmsamples           0/0               0/0        ( 0.0%) 
+faces                  622/65536       34832/3670016  ( 0.9%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces              356/65536       19936/3670016  ( 0.5%) 
+leaves                 462/65536       14784/2097152  ( 0.7%) 
+leaffaces              663/65536        1326/131072   ( 1.0%) 
+leafbrushes            350/65536         700/131072   ( 0.5%) 
+areas                    2/256            16/2048     ( 0.8%) 
+surfedges             4416/512000      17664/2048000  ( 0.9%) 
+edges                 2608/256000      10432/1024000  ( 1.0%) 
+LDR worldlights          2/8192          176/720896   ( 0.0%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            0/32768           0/393216   ( 0.0%) 
+waterstrips             52/32768         520/327680   ( 0.2%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices           825/65536        1650/131072   ( 1.3%) 
+cubemapsamples           0/1024            0/16384    ( 0.0%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]      585956/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]        7422/16777216 ( 0.0%) 
+entdata               [variable]        3465/393216   ( 0.9%) 
+LDR ambient table      462/65536        1848/262144   ( 0.7%) 
+HDR ambient table      462/65536        1848/262144   ( 0.7%) 
+LDR leaf ambient      2038/65536       57064/1835008  ( 3.1%) 
+HDR leaf ambient       462/65536       12936/1835008  ( 0.7%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/12       ( 8.3%) 
+pakfile               [variable]       86750/0        ( 0.0%) 
+physics               [variable]       53312/4194304  ( 1.3%) 
+physics terrain       [variable]           2/1048576  ( 0.0%) 
+
+Level flags = 0
+
+Total triangle count: 1748
+Writing d:\jbmod vmfs\jbdeathmatch\maps\jbdm_map07.bsp
+7 seconds elapsed
