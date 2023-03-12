@@ -1,0 +1,290 @@
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\JBMod\jbmod\materials
+Loading d:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.vmf
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\jbmod\jbmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+NODRAW on terrain surface!
+NODRAW on terrain surface!
+NODRAW on terrain surface!
+NODRAW on terrain surface!
+NODRAW on terrain surface!
+done (0)
+writing d:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/sky_day02_01*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/sky_day02_01*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Found a displacement edge abutting multiple other edges.
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+done (0) (195337 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8...9...10
+Compacting texture/material tables...
+Reduced 342 texinfos to 225
+Reduced 33 texdatas to 28 (848 bytes to 601)
+Writing d:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.bsp
+MSG_FILEWRITE - Filesystem was asked to write to 'd:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.bsp', but we don't own that location. Allowing.
+1 second elapsed
+
+
+
+6 threads
+reading d:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.bsp
+reading d:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.prt
+ 902 portalclusters
+2674 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 1896 visible clusters (0.90%)
+Total clusters visible: 210169
+Average clusters visible: 233
+Building PAS...
+Average clusters audible: 747
+visdatasize:175380  compressed from 216480
+writing d:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.bsp
+MSG_FILEWRITE - Filesystem was asked to write to 'd:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.bsp', but we don't own that location. Allowing.
+6 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.bsp
+2789 faces
+5 degenerate faces
+2034278 square feet [292936064.00 square inches]
+14 Displacements
+24119 Square Feet [3473265.75 Square Inches]
+2784 patches before subdivision
+27392 patches after subdivision
+20 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 2952277, max 534
+transfer lists:  22.5 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(70895, 68627, 60070)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(14154, 13025, 10859)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(3817, 3372, 2696)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(993, 869, 677)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(289, 251, 187)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(81, 71, 52)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(24, 21, 15)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(7, 6, 4)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(2, 2, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(1, 1, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0062 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 0 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  25/1024         1200/49152    ( 2.4%) 
+brushes                429/8192         5148/98304    ( 5.2%) 
+brushsides            3880/65536       31040/524288   ( 5.9%) 
+planes                2928/65536       58560/1310720  ( 4.5%) 
+vertexes              4198/65536       50376/786432   ( 6.4%) 
+nodes                 1697/65536       54304/2097152  ( 2.6%) 
+texinfos               225/12288       16200/884736   ( 1.8%) 
+texdata                 28/2048          896/65536    ( 1.4%) 
+dispinfos               14/0            2464/0        ( 0.0%) 
+disp_verts            1134/0           22680/0        ( 0.0%) 
+disp_tris             1792/0            3584/0        ( 0.0%) 
+disp_lmsamples       55752/0           55752/0        ( 0.0%) 
+faces                 2789/65536      156184/3670016  ( 4.3%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces             1326/65536       74256/3670016  ( 2.0%) 
+leaves                1723/65536       55136/2097152  ( 2.6%) 
+leaffaces             3278/65536        6556/131072   ( 5.0%) 
+leafbrushes           1809/65536        3618/131072   ( 2.8%) 
+areas                    3/256            24/2048     ( 1.2%) 
+surfedges            18988/512000      75952/2048000  ( 3.7%) 
+edges                10583/256000      42332/1024000  ( 4.1%) 
+LDR worldlights         20/8192         1760/720896   ( 0.2%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            3/32768          36/393216   ( 0.0%) 
+waterstrips            197/32768        1970/327680   ( 0.6%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices          3207/65536        6414/131072   ( 4.9%) 
+cubemapsamples           0/1024            0/16384    ( 0.0%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     1579352/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]      175380/16777216 ( 1.0%) 
+entdata               [variable]       61227/393216   (15.6%) 
+LDR ambient table     1723/65536        6892/262144   ( 2.6%) 
+HDR ambient table     1723/65536        6892/262144   ( 2.6%) 
+LDR leaf ambient      9595/65536      268660/1835008  (14.6%) 
+HDR leaf ambient      1723/65536       48244/1835008  ( 2.6%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/10738    ( 0.0%) 
+pakfile               [variable]      212671/0        ( 0.0%) 
+physics               [variable]      195337/4194304  ( 4.7%) 
+physics terrain       [variable]        2956/1048576  ( 0.3%) 
+
+Level flags = 0
+
+Total triangle count: 7786
+Writing d:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.bsp
+34 seconds elapsed
+
+
+
+materialPath: D:\SteamLibrary\steamapps\common\JBMod\jbmod\materials
+Loading d:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.vmf
+Could not locate 'GameData' key in d:\steamlibrary\steamapps\common\jbmod\jbmod\gameinfo.txt
+fixing up env_cubemap materials on brush sides...
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Processing areas...done (0)
+Building Faces...done (0)
+Chop Details...done (0)
+Find Visible Detail Sides...done (0)
+Merging details...done (0)
+FixTjuncs...
+PruneNodes...
+WriteBSP...
+NODRAW on terrain surface!
+NODRAW on terrain surface!
+NODRAW on terrain surface!
+NODRAW on terrain surface!
+NODRAW on terrain surface!
+done (0)
+writing d:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.prt...Building visibility clusters...
+done (0)
+Creating default LDR cubemaps for env_cubemap using skybox materials:
+   skybox/sky_day02_01*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Creating default HDR cubemaps for env_cubemap using skybox materials:
+   skybox/sky_day02_01*.vmt
+ ! Run buildcubemaps in the engine to get the correct cube maps.
+Finding displacement neighbors...
+Found a displacement edge abutting multiple other edges.
+Finding lightmap sample positions...
+Displacement Alpha : 0...1...2...3...4...5...6...7...8...9...10
+Building Physics collision data...
+done (0) (196493 bytes)
+Placing detail props : 0...1...2...3...4...5...6...7...8...9...10
+Compacting texture/material tables...
+Reduced 342 texinfos to 225
+Reduced 33 texdatas to 28 (848 bytes to 601)
+Writing d:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.bsp
+MSG_FILEWRITE - Filesystem was asked to write to 'd:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.bsp', but we don't own that location. Allowing.
+1 second elapsed
+
+
+
+6 threads
+reading d:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.bsp
+reading d:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.prt
+ 902 portalclusters
+2674 numportals
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10Optimized: 1896 visible clusters (0.90%)
+Total clusters visible: 210169
+Average clusters visible: 233
+Building PAS...
+Average clusters audible: 747
+visdatasize:175380  compressed from 216480
+writing d:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.bsp
+MSG_FILEWRITE - Filesystem was asked to write to 'd:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.bsp', but we don't own that location. Allowing.
+7 seconds elapsed
+
+
+
+[Reading texlights from 'lights.rad']
+[45 texlights parsed from 'lights.rad']
+
+Loading d:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.bsp
+2789 faces
+5 degenerate faces
+2034278 square feet [292936064.00 square inches]
+14 Displacements
+24119 Square Feet [3473265.75 Square Inches]
+2784 patches before subdivision
+27392 patches after subdivision
+20 direct lights
+0...1...2...3...4...5...6...7...8...9...100...1...2...3...4...5...6...7...8...9...10transfers 2952277, max 534
+transfer lists:  22.5 megs
+0...1...2...3...4...5...6...7...8...9...10	Bounce #1 added RGB(70895, 68627, 60070)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #2 added RGB(14154, 13025, 10859)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #3 added RGB(3817, 3372, 2696)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #4 added RGB(993, 869, 677)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #5 added RGB(289, 251, 187)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #6 added RGB(81, 71, 52)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #7 added RGB(24, 21, 15)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #8 added RGB(7, 6, 4)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #9 added RGB(2, 2, 1)
+0...1...2...3...4...5...6...7...8...9...10	Bounce #10 added RGB(1, 1, 0)
+Build Patch/Sample Hash Table(s).....Done<0.0069 sec>
+0...1...2...3...4...5...6...7...8...9...10FinalLightFace Done
+0 of 0 (0% of) surface lights went in leaf ambient cubes.
+0...1...2...3...4...5...6...7...8...9...10Writing leaf ambient...done
+Ready to Finish
+
+Object names       Objects/Maxobjs  Memory / Maxmem  Fullness 
+------------       ---------------  ---------------  -------- 
+models                  26/1024         1248/49152    ( 2.5%) 
+brushes                431/8192         5172/98304    ( 5.3%) 
+brushsides            3892/65536       31136/524288   ( 5.9%) 
+planes                2930/65536       58600/1310720  ( 4.5%) 
+vertexes              4198/65536       50376/786432   ( 6.4%) 
+nodes                 1705/65536       54560/2097152  ( 2.6%) 
+texinfos               225/12288       16200/884736   ( 1.8%) 
+texdata                 28/2048          896/65536    ( 1.4%) 
+dispinfos               14/0            2464/0        ( 0.0%) 
+disp_verts            1134/0           22680/0        ( 0.0%) 
+disp_tris             1792/0            3584/0        ( 0.0%) 
+disp_lmsamples       55752/0           55752/0        ( 0.0%) 
+faces                 2789/65536      156184/3670016  ( 4.3%) 
+hdr faces                0/65536           0/3670016  ( 0.0%) 
+origfaces             1326/65536       74256/3670016  ( 2.0%) 
+leaves                1732/65536       55424/2097152  ( 2.6%) 
+leaffaces             3278/65536        6556/131072   ( 5.0%) 
+leafbrushes           1811/65536        3622/131072   ( 2.8%) 
+areas                    3/256            24/2048     ( 1.2%) 
+surfedges            18988/512000      75952/2048000  ( 3.7%) 
+edges                10583/256000      42332/1024000  ( 4.1%) 
+LDR worldlights         20/8192         1760/720896   ( 0.2%) 
+HDR worldlights          0/8192            0/720896   ( 0.0%) 
+leafwaterdata            3/32768          36/393216   ( 0.0%) 
+waterstrips            197/32768        1970/327680   ( 0.6%) 
+waterverts               0/65536           0/786432   ( 0.0%) 
+waterindices          3207/65536        6414/131072   ( 4.9%) 
+cubemapsamples           0/1024            0/16384    ( 0.0%) 
+overlays                 0/512             0/180224   ( 0.0%) 
+LDR lightdata         [variable]     1579352/0        ( 0.0%) 
+HDR lightdata         [variable]           0/0        ( 0.0%) 
+visdata               [variable]      175380/16777216 ( 1.0%) 
+entdata               [variable]       61318/393216   (15.6%) 
+LDR ambient table     1732/65536        6928/262144   ( 2.6%) 
+HDR ambient table     1732/65536        6928/262144   ( 2.6%) 
+LDR leaf ambient      9663/65536      270564/1835008  (14.7%) 
+HDR leaf ambient      1732/65536       48496/1835008  ( 2.6%) 
+occluders                0/0               0/0        ( 0.0%) 
+occluder polygons        0/0               0/0        ( 0.0%) 
+occluder vert ind        0/0               0/0        ( 0.0%) 
+detail props          [variable]           1/12       ( 8.3%) 
+static props          [variable]           1/10738    ( 0.0%) 
+pakfile               [variable]      212671/0        ( 0.0%) 
+physics               [variable]      196493/4194304  ( 4.7%) 
+physics terrain       [variable]        2956/1048576  ( 0.3%) 
+
+Level flags = 0
+
+Total triangle count: 7786
+Writing d:\jbmod vmfs\jbdeathmatch\maps\jbdm_tp_2flat_wip3.bsp
+33 seconds elapsed

@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "8864"
-	"mapversion" "31"
+	"mapversion" "33"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -72,7 +72,7 @@ bgimages_plus
 world
 {
 	"id" "1"
-	"mapversion" "31"
+	"mapversion" "33"
 	"classname" "worldspawn"
 	"comment" "Decompiled by BSPSource v1.4.2-rc.1 from gm_2flat"
 	"detailmaterial" "detail/detailsprites"
@@ -65736,10 +65736,10 @@ entity
 {
 	"id" "207432"
 	"classname" "trigger_multiple"
-	"filtername" "red_cap_filter"
+	"filtername" "red_team_filter"
 	"origin" "0 -3600 -152"
 	"spawnflags" "1"
-	"StartDisabled" "1"
+	"StartDisabled" "0"
 	"wait" "1"
 	connections
 	{
@@ -66147,7 +66147,7 @@ entity
 	"filtername" "blu_team_filter"
 	"origin" "0 1552 -152"
 	"spawnflags" "1"
-	"StartDisabled" "1"
+	"StartDisabled" "0"
 	"wait" "1"
 	connections
 	{
@@ -72125,8 +72125,8 @@ cameras
 	"activecamera" "0"
 	camera
 	{
-		"position" "[3.05949 -3372.84 -117.971]"
-		"look" "[21.521 -3108.56 -145.815]"
+		"position" "[63.2406 -3362.25 -99.1367]"
+		"look" "[-65.0723 -3595.68 -100.996]"
 	}
 	camera
 	{
