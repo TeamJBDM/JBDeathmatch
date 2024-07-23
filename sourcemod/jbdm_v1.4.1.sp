@@ -16,11 +16,11 @@ public Plugin myinfo =
 new Handle:JBDMAnnabelleEnabled;
 new Handle:TeamplayEnabled;
 new Handle:MaxFrags;
-new Handle:JBDMRailgunEnabled
-new Handle:SGGEnabled
-new Handle:SGGRange
-new Handle:GGRange
-new Handle:JBDMEnablePhysgun
+new Handle:JBDMRailgunEnabled;
+new Handle:SGGEnabled;
+new Handle:SGGRange;
+new Handle:GGRange;
+new Handle:JBDMEnablePhysgun;
 new Handle:JBDMFlaregunEnabled;
 
 public void OnPluginStart()
