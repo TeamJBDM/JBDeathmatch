@@ -1,0 +1,3 @@
+JBMod Deathmatch plugin, and more! Don't check the maps folder it's scary and weird...
+
+jbdm_v1.4.1.smx is the newest version of the plugin!! get that one!!!
