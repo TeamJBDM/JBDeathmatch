@@ -10,6 +10,16 @@ jbdm_v1.2.sp and jbdm_v1.2.smx
 
 but it made me cum a little it was so smooth
 
-do not release 1.3 yet, it does not have enough new features yet. only minor fixes. :3
+jbdm_v1.3.sp and jbdm_v1.3.smx and so forth
 
-jb_bhop is not used on any of the servers, and I should probably supply a server.cfg for server hosters to use at some point.
+Older releases of JBDM, before/while stuff like physgun toggle and railgunmode was added. also multiplayer support! (prefix your map with jbdm_tp_ for this to work)
+
+jbdm_v1.4.sp and jbdm_v1.4.smx
+
+Physgun toggle, teamplay functionality, railgunmode, annabelle toggle, all the she-bang!
+
+jbdm_v1.4.1.sp and jbdm_v1.4.1.smx
+-JBDM's most updated version
+Made the flaregun's projectiles do contact damage and ignite things on touch :) Currently damage and burntime is hardcoded...
+
+The plguins jb_bhop, antikillbind, and fnaflife, are not used on any of the servers, and I should probably supply a server.cfg for server hosters to use at some point.
