@@ -168,12 +168,13 @@ public Action OnFlareTouch(entity, other) {
 /// other is the thing that entity touched
 public Action OnHealingTouch(entity, other) {
 	if(!IsValidEntity(other)) {
-		return Plugin_Handled;
+		return Plugin_Continue;
 	}
 	new String:cname[256];
 	GetEntPropString(other, Prop_Data, "m_iClassname", cname, sizeof(cname));
 	if (StrEqual(cname, "player")) {
 		ExtinguishEntity(other);
+		return Plugin_Continue;
 	}
 	return Plugin_Continue;
 }
