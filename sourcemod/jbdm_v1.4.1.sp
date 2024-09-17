@@ -99,7 +99,7 @@ public OnEntityCreated(int entity, const char[] classname) {
 	if (StrEqual(classname, "env_flare")) {
 		SDKHook(entity, SDKHook_StartTouch, OnFlareTouch);
 	}
-	if (StrContains(classname, "item_health")) {
+	if (StrContains(classname, "item_health") != -1) {
 		SDKHook(entity, SDKHook_StartTouch, OnHealingTouch);
 	}
 }
@@ -145,17 +145,22 @@ public Action OnWeaponEquip(client, weapon) {
 /// entity is the env_flare
 /// other is the thing that entity touched
 public Action OnFlareTouch(entity, other) {
-	if(!IsValidEntity(other)) {
-		return Plugin_Handled;
-	}
-	new String:cname[256];
-	GetEntPropString(other, Prop_Data, "m_iClassname", cname, sizeof(cname));
-	if (StrEqual(cname, "player") || StrContains(cname, "prop_physics") || StrEqual(cname, "func_breakable") || StrContains(cname, "npc_")) {
-		SDKHooks_TakeDamage(other, entity, entity, GetConVarFloat(JBDMFlaregunDamage), 8);
-		IgniteEntity(other, 5.0);
-	}
-	SDKUnhook(entity, SDKHook_StartTouch, OnFlareTouch)
-	return Plugin_Continue;
+    new String:cname[256];
+    GetEntPropString(other, Prop_Data, "m_iClassname", cname, sizeof(cname));
+
+    if(!IsValidEntity(other)) {
+        return Plugin_Continue;
+    }
+	
+    if (StrEqual(cname, "player") || StrContains(cname, "prop_physics") != -1 || StrEqual(cname, "func_breakable") || StrContains(cname, "npc_") != -1) {
+        SDKHooks_TakeDamage(other, entity, entity, GetConVarFloat(JBDMFlaregunDamage), 8);
+        IgniteEntity(other, 5.0);
+		AcceptEntityInput(entity, "kill")
+		SDKUnhook(entity, SDKHook_StartTouch, OnFlareTouch)
+        return Plugin_Continue;
+    }
+	
+    return Plugin_Continue;
 }
 
 /// [PURPOSE:] Touching a healthkit or healthvial will extinguish the player.
