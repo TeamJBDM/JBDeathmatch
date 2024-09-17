@@ -6,9 +6,9 @@
 
 public Plugin myinfo =
 {
-    name = "JBMod Deathmatch Weapons",
+    name = "JBMod Deathmatch (JBDM)",
     author = "stressedcatinabox, nafrayu, allinkdev",
-    description = "Gives the pistol, gravity gun, grenades, and smg to players when they spawn in, as well as removing the physgun from them. Made for JBMod Deathmatch servers.",
+    description = "Gives the pistol, gravity gun, grenades, and smg to players when they spawn in, as well as removing the physgun from them. Made for JBMod Deathmatch servers.\nHas some unique functions too, such as railgun mode, teamplay stuff, weapon_flaregun as a usable weapon, and the Annabelle . . . :fear:\nHappy fragging! :D",
     version = "1.4.1",
     url = "https://discord.gg/P6ZwJvCsG8"
 }
@@ -22,30 +22,38 @@ new Handle:SGGRange;
 new Handle:GGRange;
 new Handle:JBDMEnablePhysgun;
 new Handle:JBDMFlaregunEnabled;
+new Handle:JBDMTeamplayOverride;
+new Handle:JBDMFlaregunDamage;
 
+/// [PURPOSE:] Set up hook events and convars n stuff...
 public void OnPluginStart()
 {
-    PrintToServer("Hello world! Started JBMod Deathmatch plugin successfully!");
+    PrintToServer("Let's get fragging! Started the JBMod Deathmatch plugin successfully!");
     LoadTranslations("common.phrases.txt"); // Required for FindTarget fail reply
     HookEvent("player_spawn", Event_PlayerSpawn);
     //RegConsoleCmd("sm_sosmooth", cmd_jbdm_giveEverything, "but it made me cum a little it was so smooth");
 	RegAdminCmd("sm_sosmooth", cmd_jbdm_giveEverything, ADMFLAG_CHEATS, "but it made me cum a little it was so smooth"); 
-    JBDMAnnabelleEnabled = CreateConVar("jbdm_giveannabelle", "0", "Give weapon_annabelle on spawn? If higher than 0, then yes");
+    JBDMAnnabelleEnabled = CreateConVar("jbdm_giveannabelle", "0", "Give weapon_annabelle on spawn? If 1 or higher, then yes");
     TeamplayEnabled = FindConVar("mp_teamplay")
     MaxFrags = FindConVar("mp_fraglimit")
-	JBDMRailgunEnabled = CreateConVar("jbdm_railgunmode", "0", "Enable Rail-Gravity Gun mode? Enables Super Gravity Gun and increases direct damage and range. Weapons will not drop ammo. If higher than 0, then yes");
+	JBDMRailgunEnabled = CreateConVar("jbdm_railgunmode", "0", "Enable Rail-Gravity Gun mode? Enables Super Gravity Gun and increases direct damage and range. Weapons will not drop on death. If 1 or higher, then yes");
 	SGGEnabled = FindConVar("physcannon_mega_enabled")
 	SGGRange = FindConVar("physcannon_mega_tracelength")
 	GGRange = FindConVar("physcannon_tracelength")
-	JBDMEnablePhysgun = CreateConVar("jbdm_givephysgun", "0", "Give weapon_physgun on spawn? If higher than 0, then yes");
-	JBDMFlaregunEnabled = CreateConVar("jbdm_giveflaregun", "0", "Give weapon_flaregun on spawn? If higher than 0, then yes");
+	JBDMEnablePhysgun = CreateConVar("jbdm_givephysgun", "0", "Give weapon_physgun on spawn? If 1 or higher, then yes");
+	JBDMFlaregunEnabled = CreateConVar("jbdm_giveflaregun", "0", "Give weapon_flaregun on spawn? If 1 or higher, then yes (KINDA BROKEN RIGHT NOW, CAUSES CRASHES ON CONTACT WITH A FEW BRUSH ENTITIES)");
+	JBDMTeamplayOverride = CreateConVar("jbdm_teamplayoverride", "0", "Force teamplay to enable? If 1 or higher, then yes (Doesn't affect mp_fraglimit)\nONLY UPDATES AFTER MAP CHANGES!!!");
+	JBDMFlaregunDamage = CreateConVar("jbdm_plr_dmg_flare", "60.0", "Contact damage for flaregun flares (60 by default)", true);
 }
 
-// Made by Allink 🤤
+/// Made by Allink 🤤
+/// [PURPOSE:] Handle teamplay functionality. Automatically enables mp_teamplay and change mp_fraglimit to 75 if the server's on a JBDM teamplay map
 public void OnMapInit(const char[] mapName) {
-    if (StrContains(mapName, "jbdm_tp", false) != -1 || StrEqual(mapName, "jbdm_soccer")) {
+    if (StrContains(mapName, "jbdm_tp", false) != -1 || StrEqual(mapName, "jbdm_soccer") || (GetConVarInt(JBDMTeamplayOverride) >= 1)) {
         SetConVarBool(TeamplayEnabled, true, false, true);
-        SetConVarInt(MaxFrags, 75, true, true);
+		if (GetConVarInt(JBDMTeamplayOverride) < 1) {
+		SetConVarInt(MaxFrags, 75, true, true);
+		}
         return;
     }
 	
@@ -56,6 +64,7 @@ public void OnMapInit(const char[] mapName) {
 
 public Event_PlayerSpawn(Handle: event, const String: name[], bool: dontBroadcast) {
     new client = GetClientOfUserId(GetEventInt(event, "userid"));
+	ExtinguishEntity(client);
     GivePlayerItem(client, "weapon_physcannon");
     
     char map[256];
@@ -90,12 +99,16 @@ public OnEntityCreated(int entity, const char[] classname) {
 	if (StrEqual(classname, "env_flare")) {
 		SDKHook(entity, SDKHook_StartTouch, OnFlareTouch);
 	}
+	if (StrContains(classname, "item_health")) {
+		SDKHook(entity, SDKHook_StartTouch, OnHealingTouch);
+	}
 }
 
 public Action OnWeaponEquip(client, weapon) {
     decl String:sWeapon[32];
     GetEdictClassname(weapon, sWeapon, sizeof(sWeapon));
 
+/// [PURPOSE:] Unless physgun 
     if (GetConVarInt(JBDMEnablePhysgun) < 1) {
 		if(StrEqual(sWeapon, "weapon_physgun")) { 
 			AcceptEntityInput(weapon, "Kill");
@@ -125,18 +138,38 @@ public Action OnWeaponEquip(client, weapon) {
     return Plugin_Continue;
 }
 
+/// [PURPOSE:] Touching an env_flare (which is usually shot out by weapon_flaregun) will damage and ignite certain things.
+/// These certain things are: Players, physics props, func_breakable specifically, and NPC's
+/// The damage dealt by contact with the flare is configurable, but set to 60.0 by default.
+/// Victims will be ignited for 5 seconds upon contact, too.
+/// entity is the env_flare
+/// other is the thing that entity touched
 public Action OnFlareTouch(entity, other) {
 	if(!IsValidEntity(other)) {
 		return Plugin_Handled;
 	}
-	SDKHooks_TakeDamage(other, entity, entity, 60.0, 8);
 	new String:cname[256];
 	GetEntPropString(other, Prop_Data, "m_iClassname", cname, sizeof(cname));
-	if (!StrEqual(cname, "worldspawn")) {
+	if (StrEqual(cname, "player") || StrContains(cname, "prop_physics") || StrEqual(cname, "func_breakable") || StrContains(cname, "npc_")) {
+		SDKHooks_TakeDamage(other, entity, entity, GetConVarFloat(JBDMFlaregunDamage), 8);
 		IgniteEntity(other, 5.0);
-		return Plugin_Continue;
 	}
 	SDKUnhook(entity, SDKHook_StartTouch, OnFlareTouch)
+	return Plugin_Continue;
+}
+
+/// [PURPOSE:] Touching a healthkit or healthvial will extinguish the player.
+/// entity is the healthkit/healthvial
+/// other is the thing that entity touched
+public Action OnHealingTouch(entity, other) {
+	if(!IsValidEntity(other)) {
+		return Plugin_Handled;
+	}
+	new String:cname[256];
+	GetEntPropString(other, Prop_Data, "m_iClassname", cname, sizeof(cname));
+	if (StrEqual(cname, "player")) {
+		ExtinguishEntity(other);
+	}
 	return Plugin_Continue;
 }
 
@@ -236,6 +269,8 @@ stock jb_GiveAmmo(int client, char[] weaponName, bool secondary, int ammoCount)
     }
 }
 
+/// [PURPOSE:] ONLY IF railgun mode is enabled, override damage done to things if the attacker is holding the gravity gun. Else, change nothing.
+/// I just realized this doesn't check if the INFLICTOR is weapon_physcannon, just that the attacker has it equipped... erm what the flip!!
 public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &damage, int &damagetype)
 {
 	if (GetConVarInt(JBDMRailgunEnabled) >= 1) {
