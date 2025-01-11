@@ -61,10 +61,14 @@ public void OnMapInit(const char[] mapName) {
     SetConVarInt(MaxFrags, 30, true, true);
 }
 
-
+/// [PURPOSE:] Do stuff when the player spawns in and respawns
 public Event_PlayerSpawn(Handle: event, const String: name[], bool: dontBroadcast) {
     new client = GetClientOfUserId(GetEventInt(event, "userid"));
-	ExtinguishEntity(client);
+	/// Thanks nafrayu!
+	SetVariantInt(0);
+	AcceptEntityInput(client, "IgniteLifetime", -1, -1, -1);
+	///
+		
     GivePlayerItem(client, "weapon_physcannon");
     
     char map[256];
@@ -98,17 +102,20 @@ public OnEntityCreated(int entity, const char[] classname) {
 
 	if (StrEqual(classname, "env_flare")) {
 		SDKHook(entity, SDKHook_StartTouch, OnFlareTouch);
+		PrintToConsoleAll("hooked flaregun");
 	}
 	if (StrContains(classname, "item_health") != -1) {
 		SDKHook(entity, SDKHook_StartTouch, OnHealingTouch);
+		PrintToConsoleAll("hooked medkit");
 	}
 }
 
+/// [PURPOSE:] Removes weapons from the player (physgun, crowbar*) and activate railgun settings
 public Action OnWeaponEquip(client, weapon) {
     decl String:sWeapon[32];
     GetEdictClassname(weapon, sWeapon, sizeof(sWeapon));
 
-/// [PURPOSE:] Unless physgun 
+/// [PURPOSE:] Unless physgun is allowed to spawn, KILL IT WITH HAMMERZ...
     if (GetConVarInt(JBDMEnablePhysgun) < 1) {
 		if(StrEqual(sWeapon, "weapon_physgun")) { 
 			AcceptEntityInput(weapon, "Kill");
@@ -156,7 +163,6 @@ public Action OnFlareTouch(entity, other) {
         SDKHooks_TakeDamage(other, entity, entity, GetConVarFloat(JBDMFlaregunDamage), 8);
         IgniteEntity(other, 5.0);
 		AcceptEntityInput(entity, "kill")
-		SDKUnhook(entity, SDKHook_StartTouch, OnFlareTouch)
         return Plugin_Continue;
     }
 	
@@ -173,7 +179,9 @@ public Action OnHealingTouch(entity, other) {
 	new String:cname[256];
 	GetEntPropString(other, Prop_Data, "m_iClassname", cname, sizeof(cname));
 	if (StrEqual(cname, "player")) {
-		ExtinguishEntity(other);
+		SetVariantInt(0);
+		AcceptEntityInput(other, "IgniteLifetime", -1, -1, -1);
+		
 		return Plugin_Continue;
 	}
 	return Plugin_Continue;
@@ -215,7 +223,7 @@ public Action:cmd_jbdm_giveEverything(int client, int args) {
 }
 
 stock jbdm_GiveEverything(int client, int target) {
-    // thanks nafrayu!
+    /// thanks nafrayu!
     GivePlayerItem(target, "weapon_leafblower");
     GivePlayerItem(target, "weapon_annabelle");
     GivePlayerItem(target, "weapon_flaregun");
