@@ -20,6 +20,7 @@ Physgun toggle, teamplay functionality, railgunmode, annabelle toggle, all the s
 
 jbdm_v1.4.1.sp and jbdm_v1.4.1.smx
 -JBDM's most updated version
-Made the flaregun's projectiles do contact damage and ignite things on touch :) Currently damage and burntime is hardcoded...
+Made the flaregun's projectiles do contact damage and ignite things on touch :) Currently the burntime is hardcoded, but you can customize the contact damage.
+Added teamplay override.
 
-The plguins jb_bhop, antikillbind, and fnaflife, are not used on any of the servers, and I should probably supply a server.cfg for server hosters to use at some point.
+The plugins jb_bhop, antikillbind, and fnaflife, are not used on any of the servers, and I should probably supply a server.cfg for server hosters to use at some point.
