@@ -22,27 +22,21 @@ url         = "https://discord.gg/P6ZwJvCsG8"
 public void OnPluginStart()
 {
     HookEntityOutput("func_breakable", "OnHealthChanged", OutputHook);
-    // PowerlvlHP
-    // GetEntPropString(entity, Prop_Data, "m_iName", buffer, size);
 }
 
 
 public void OutputHook(const char[] name, int caller, int activator, float delay)
 {
-    // char callerClassname[64];
-    // if (caller >= 0 && IsValidEntity(caller)) {
-        // GetEntityClassname(caller, callerClassname, sizeof(callerClassname));
-    // }
-
-    // char activatorClassname[64];
-    // if (activator >= 0 && IsValidEntity(activator)) {
-        // GetEntityClassname(activator, activatorClassname, sizeof(activatorClassname));
-    // }
-    
-    // PrintToChatAll("[ENTOUTPUT] %s (caller: %d/%s, activator: %d/%s)", name, caller, callerClassname, activator, activatorClassname);
-    
-    // PrintToConsoleAll("%d", powerlvlent);
+	char map[256];
+    GetCurrentMap(map, sizeof(map));
     
     int health = GetEntProp(caller, Prop_Data, "m_iHealth");
+	if (StrEqual(map, "jb_fnaf_1")) 
+	{
+	PrintCenterTextAll("Power: %i", health/20);
+	}
+	else
+	{
     PrintCenterTextAll("Power: %i", health/10);
+	}
 }
