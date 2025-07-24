@@ -23,4 +23,4 @@ jbdm_v1.4.1.sp and jbdm_v1.4.1.smx
 Made the flaregun's projectiles do contact damage and ignite things on touch :) Currently the burntime is hardcoded, but you can customize the contact damage.
 Added teamplay override.
 
-The plugins jb_bhop, antikillbind, and fnaflife, are not used on any of the servers, and I should probably supply a server.cfg for server hosters to use at some point.
+The plugins jb_bhop, antikillbind, fnaflife, and jb_noblock are not used on any of the servers, and I should probably supply a server.cfg for server hosters to use at some point.

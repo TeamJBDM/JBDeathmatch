@@ -49,7 +49,7 @@ public void OnPluginStart()
 /// Made by Allink 🤤
 /// [PURPOSE:] Handle teamplay functionality. Automatically enables mp_teamplay and change mp_fraglimit to 75 if the server's on a JBDM teamplay map
 public void OnMapInit(const char[] mapName) {
-    if (StrContains(mapName, "jbdm_tp", false) != -1 || StrEqual(mapName, "jbdm_soccer") || (GetConVarInt(JBDMTeamplayOverride) >= 1)) {
+    if (StrContains(mapName, "jbdm_tp_", false) != -1 || StrEqual(mapName, "jbdm_soccer") || (GetConVarInt(JBDMTeamplayOverride) >= 1)) {
         SetConVarBool(TeamplayEnabled, true, false, true);
 		if (GetConVarInt(JBDMTeamplayOverride) < 1) {
 		SetConVarInt(MaxFrags, 75, true, true);
@@ -61,10 +61,11 @@ public void OnMapInit(const char[] mapName) {
     SetConVarInt(MaxFrags, 30, true, true);
 }
 
+/// Thanks nafrayu!
 /// [PURPOSE:] Do stuff when the player spawns in and respawns
 public Event_PlayerSpawn(Handle: event, const String: name[], bool: dontBroadcast) {
     new client = GetClientOfUserId(GetEventInt(event, "userid"));
-	/// Thanks nafrayu!
+	
 	SetVariantInt(0);
 	AcceptEntityInput(client, "IgniteLifetime", -1, -1, -1);
 	///
@@ -102,11 +103,11 @@ public OnEntityCreated(int entity, const char[] classname) {
 
 	if (StrEqual(classname, "env_flare")) {
 		SDKHook(entity, SDKHook_StartTouch, OnFlareTouch);
-		PrintToConsoleAll("hooked flaregun");
+		///PrintToConsoleAll("hooked flaregun");
 	}
 	if (StrContains(classname, "item_health") != -1) {
 		SDKHook(entity, SDKHook_StartTouch, OnHealingTouch);
-		PrintToConsoleAll("hooked medkit");
+		///PrintToConsoleAll("hooked medkit");
 	}
 }
 
@@ -222,8 +223,8 @@ public Action:cmd_jbdm_giveEverything(int client, int args) {
     return Plugin_Handled;
 }
 
+/// Thanks nafrayu!
 stock jbdm_GiveEverything(int client, int target) {
-    /// thanks nafrayu!
     GivePlayerItem(target, "weapon_leafblower");
     GivePlayerItem(target, "weapon_annabelle");
     GivePlayerItem(target, "weapon_flaregun");
