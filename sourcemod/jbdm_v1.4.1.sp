@@ -44,6 +44,9 @@ public void OnPluginStart()
 	JBDMFlaregunEnabled = CreateConVar("jbdm_giveflaregun", "0", "Give weapon_flaregun on spawn? If 1 or higher, then yes (KINDA BROKEN RIGHT NOW, CAUSES CRASHES ON CONTACT WITH A FEW BRUSH ENTITIES)");
 	JBDMTeamplayOverride = CreateConVar("jbdm_teamplayoverride", "0", "Force teamplay to enable? If 1 or higher, then yes (Doesn't affect mp_fraglimit)\nONLY UPDATES AFTER MAP CHANGES!!!");
 	JBDMFlaregunDamage = CreateConVar("jbdm_plr_dmg_flare", "60.0", "Contact damage for flaregun flares (60 by default)", true);
+	
+	
+	AddFileToDownloadsTable("scripts/weapon_annabelle.txt");
 }
 
 /// Made by Allink 🤤
